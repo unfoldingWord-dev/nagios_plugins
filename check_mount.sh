@@ -34,7 +34,7 @@ while test -n "$1"; do
             shift
             ;;
         --dir|-d)
-            DIR="YES"
+            DIR="$2"
             shift
             ;;
         *)
