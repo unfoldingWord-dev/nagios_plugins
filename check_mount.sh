@@ -15,7 +15,6 @@ help() {
     echo
     echo "Usage:"
     echo "   $PROGNAME -m <mountpath> [-d <directory>]"
-    echo "   $PROGNAME -m /mnt/nfsshare -d mydir"
     echo "   $PROGNAME --help"
     echo
     exit 1
