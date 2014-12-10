@@ -58,7 +58,7 @@ ok() {
 [ -z "$MNT" ] && help
 
 # Exit Critical if mount not found
-mount | grep  " $MNT "  || crit "$MNT not mounted"
+mount | grep -q " $MNT "  || crit "$MNT not mounted"
 
 # Exit OK if we don't need to do a directory check
 [ -z "$DIR" ] && ok
