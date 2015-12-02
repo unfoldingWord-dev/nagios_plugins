@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+#  Copyright (c) 2014 unfoldingWord
+#  http://creativecommons.org/licenses/MIT/
+#  See LICENSE file for details.
+#
+#  Contributors:
+#  Jeff Petitt <jcpetitt1@gmail.com>
 
 # https://github.com/unfoldingWord-dev/sysadmin/issues/23
 
