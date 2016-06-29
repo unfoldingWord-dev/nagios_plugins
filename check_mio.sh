@@ -217,7 +217,7 @@ fi
 
 
 # Output status and perf data
-OUTPUT="${OUTPUT} |ReadPerSec=${REQ_READ};; WritePerSec=${REQ_WRITE};; AWaitMS=${WAIT};; BReadPS=${DATA_READ};; BWritePS=${DATA_WRITE};;"
+OUTPUT="${OUTPUT} |ReadPerSec=${REQ_READ} WritePerSec=${REQ_WRITE} AWaitMS=${WAIT}ms BReadPS=${DATA_READ}B BWritePS=${DATA_WRITE}B"
 if [ "$CRIT" -eq 0 -a "$WARN" -eq 0 ]; then
   p_ok "$OUTPUT"
 elif [ "$CRIT" -eq 1 ]; then
