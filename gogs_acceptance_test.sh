@@ -46,7 +46,7 @@ done
 : ${TOKEN=false}
 : ${PASS=""}
 
-echo -n "Testing $HOST..."
+echo -n "Testing $HOST"
 
 # Put all output into log
 exec >$LOGFILE 2>&1
@@ -132,6 +132,4 @@ git push origin master
 
 # Final cleanup
 rm -rf "$TMPDIR"
-
-exec >/dev/tty
 echo "OK"
