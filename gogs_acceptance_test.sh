@@ -25,18 +25,18 @@ help() {
     echo "Usage: $0 [options]"
     echo
     echo "Options:"
-    echo "    -h       Host to run against, default is localhost:3000"
+    echo "    -H       Host to run against, default is localhost:3000"
     echo "    -t       Token for testing API"
     echo "    -p       Password for acceptance_test user"
-    echo "    -?       Displays this messsage"
+    echo "    -h       Displays this messsage"
 }
 
 while test $# -gt 0; do
     case "$1" in
-        -h|--host) shift; HOST=$1;;
+        -H|--hostname) shift; HOST=$1;;
         -t|--token) shift; TOKEN=$1;;
         -p|--pass) shift; PASS=":$1";;
-        -?|--help) help && exit 1;;
+        -h|--help) help && exit 1;;
     esac
     shift;
 done
