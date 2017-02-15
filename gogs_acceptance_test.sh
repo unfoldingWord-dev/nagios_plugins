@@ -8,8 +8,9 @@
 #  Contributors:
 #  Jesse Griffin <jesse@unfoldingword.org>
 
-# Temp directory
+# Temp and log location
 TMPDIR=/tmp/gogs_test
+LOGFILE=/tmp/gogs_acceptance_test.log
 
 get_tmp() {
     # Setup temporary environment
@@ -45,9 +46,10 @@ done
 : ${TOKEN=false}
 : ${PASS=""}
 
-echo
-echo "Running against $HOST..."
-echo
+echo -n "Testing $HOST..."
+
+# Put all output into log
+exec >$LOGFILE 2>&1
 
 # Show commands being executed and exit upon any error
 set -xe
@@ -130,3 +132,6 @@ git push origin master
 
 # Final cleanup
 rm -rf "$TMPDIR"
+
+exec >/dev/tty
+echo "OK"
