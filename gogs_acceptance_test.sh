@@ -54,23 +54,38 @@ exec >$LOGFILE 2>&1
 # Show commands being executed and exit upon any error
 set -xe
 
-# Create repo, add file, create tag, release, token?
-
 # Test for Google Analytics ID
 wget -q -O - https://$HOST \
   | grep -q "UA-6010"
 
 # API Tests
-# Get list of repos
+# Create a repo
 wget -q -O - \
-  https://$HOST/api/v1/repos/search \
-  | grep -q watchers_count
+  --header="Authorization: token $TOKEN" \
+  --post-data="name=api_test" \
+  https://$HOST/api/v1/user/repos \
+  | grep -q "acceptance_test/api_test"
 
 # Get list of repos for user
 wget -q -O - \
   --header="Authorization: token $TOKEN" \
   https://$HOST/api/v1/user/repos \
-  | grep -q "test.git"
+  | grep -q "username"
+
+# Get repo we just created
+wget -q -O - \
+  --header="Authorization: token $TOKEN" \
+  https://$HOST/api/v1/repos/acceptance_test/api_test \
+  | grep -q "watchers_count"
+
+# Get list of all repos
+wget -q -O - \
+  https://$HOST/api/v1/repos/search \
+  | grep -q watchers_count
+
+# Delete repo we created
+curl -X DELETE -H "Authorization: token $TOKEN" \
+  https://$HOST/api/v1/repos/acceptance_test/api_test
 
 # Test download of code from repo
 ## zip ball
