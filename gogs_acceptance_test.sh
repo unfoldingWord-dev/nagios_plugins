@@ -62,7 +62,6 @@ wget -q -O - https://$HOST \
 # Create a repo
 wget -q -O - \
   --header="Authorization: token $TOKEN" \
-  --post-data="name=api_test" \
   https://$HOST/api/v1/user/repos \
   | grep -q "acceptance_test/api_test"
 
