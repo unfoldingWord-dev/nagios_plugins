@@ -59,6 +59,10 @@ wget -q -O - https://$HOST \
   | grep -q "UA-6010"
 
 # API Tests
+# Try deleting repo in case last run failed
+curl -X DELETE -H "Authorization: token $TOKEN" \
+  https://$HOST/api/v1/repos/acceptance_test/api_test
+
 # Create a repo
 wget -q -O - \
   --header="Authorization: token $TOKEN" \
