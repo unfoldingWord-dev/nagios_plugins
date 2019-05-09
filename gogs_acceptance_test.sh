@@ -85,11 +85,16 @@ wget -q -O - \
 # Get list of all repos
 wget -q -O - \
   https://$HOST/api/v1/repos/search \
-  | grep -q watchers_count
+  | grep -q "watchers_count"
 
 # Delete repo we created
 curl -X DELETE -H "Authorization: token $TOKEN" \
   https://$HOST/api/v1/repos/acceptance_test/api_test
+
+# Test searching without logging in
+curl -X GET \
+  "https://$HOST/api/v1/users/search?q=acceptance_test" \
+  | grep -q "4959"
 
 # Test download of code from repo
 ## zip ball
